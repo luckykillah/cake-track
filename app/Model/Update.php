@@ -2,7 +2,8 @@
 class Update extends AppModel{
 	
 	public $validate = array(
-        'routine_id' => array('rule' => 'notEmpty')
+        'routine_id' => array('rule' => 'notEmpty'),
+        'date' => array('rule' => 'notEmpty'),
     );
 
 	public $belongsTo = array(

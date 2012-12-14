@@ -14,8 +14,10 @@ class RoutinesController extends AppController {
     }
 
     public function add() {
+        $this->Session->setFlash('Add called');
         if ($this->request->is('routine')) {
             $this->Routine->create();
+            $this->Session->setFlash('Add called 2');
             if ($this->Routine->save($this->request->data)) {
                 $this->Session->setFlash('Your routine has been saved.');
                 $this->redirect(array('action' => 'index'));

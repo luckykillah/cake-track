@@ -1,8 +1,10 @@
-<h1>Add Routine</h1>
-<?
-echo $this->Form->create('Routine');
-echo $this->Form->input('title');
-echo $this->Form->input('body', array('rows' => '3'));
-echo $this->Form->input('frequency');
-echo $this->Form->end('Save Routine');
-?>
+<div class="add form">
+	<h1>Add Routine</h1>
+
+	<?= $this->Form->create('Routine');?>
+	<?= $this->Form->input('title', array('label' => false, 'placeholder' => 'What\'s is it?')); ?>
+	<?= $this->Form->input('body', array('rows' => '3', 'label' => false, 'placeholder' => 'What does it entail?'));?>
+	Repeat every <?= $this->Form->input('frequency', array('label' => false, 'div' => false)); ?> days
+	<?= $this->Form->end('Save', array('class' => 'button')); ?>
+
+</div>

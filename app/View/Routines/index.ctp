@@ -1,18 +1,20 @@
-<h1>Routines</h1>
-<?= $this->Html->link('Add Routine', array('action' => 'add')); ?>
+<section class="posts">
+    <h1>Routines <span class="add"><?= $this->Html->link('+', array('action' => 'add')); ?></a></h1>
 
-<ul>
-	<? foreach ($routines as $routine): ?>
-	<li>
-		<h2><?= $this->Html->link($routine['Routine']['title'],
-array('controller' => 'routines', 'action' => 'view', $routine['Routine']['id'].': '.$routine['Routine']['title'])); ?></h2>
-		<div class="content"><?= $routine['Routine']['id']?></div>
-		<div class="meta">
-			Created: <?= $routine['Routine']['created']?><br />
-			Frequency: <?= $routine['Routine']['frequency']?><br />
-			<?php echo $this->Html->link('Edit Routine', array('action' => 'edit')); ?>
-		</div>
-	</li>
-	<? endforeach; ?>
-	<? unset($post); ?>
-</ul>
+    <? foreach ($routines as $routine): ?>
+    
+    <article class="post" id="post-<?= $routine['Routine']['id']; ?>">
+        <h2><?php echo $this->Html->link($routine['Routine']['title'], array('action' => 'view', $routine['Routine']['id'])); ?></h2>
+        
+        <div class="content">
+            Every <?= $routine['Routine']['frequency']?> days... <?= $routine['Routine']['body']; ?>
+        </div>
+
+        <footer class="meta">
+            <?= $this->Html->link('Edit', array('action' => 'edit', $routine['Routine']['id'])); ?>
+        </footer>
+    </article>
+
+    <?php endforeach; ?>
+    <? unset($routine); ?>
+</section>

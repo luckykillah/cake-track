@@ -1,0 +1,117 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "normalize";
+@import "helpers";
+
+/* ---------------------------------------------
+   
+   Base styles
+
+--------------------------------------------- */
+*{ @include box-sizing(border-box); }
+
+html, button, input, select, textarea { color: #222; }
+
+body { font-size: 1em; line-height: 1.4; }
+::-moz-selection { background: #b3d4fc; text-shadow: none; }
+::selection { background: #b3d4fc; text-shadow: none; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+img { vertical-align: middle; }
+fieldset { border: 0; margin: 0; padding: 0; }
+textarea { resize: vertical; }
+
+
+/* ---------------------------------------------
+
+   Structure
+
+--------------------------------------------- */
+
+html, body{ height: 100%; }
+#container{ min-height: 100%%; position: relative; max-width: 800px; margin: 0 auto; padding-top: 40px; }
+
+ul{ margin: 0; padding: 0; }
+
+
+/* ---------------------------------------------
+
+   Type
+
+--------------------------------------------- */
+
+html{ font-family: Baskerville, Georgia, 'Times New Roman', Times, serif; }
+
+
+/* ---------------------------------------------
+
+   Forms + Buttons
+
+--------------------------------------------- */
+
+.form{ 
+  max-width: 400px; padding: 2em; border: 1px dotted #333; text-align: center; margin: 0 auto; 
+  h1{ letter-spacing: .1em; text-transform: uppercase; }
+  
+  /* Standard Inputs */
+  input, textarea{ 
+    width: 100%; clear: both; margin-bottom: 1em; padding: 1em;
+    &:focus{ outline: none; }}
+  label{ display: block; }
+  select{ margin-bottom: 1em; }
+
+  /* Number */
+  input[type="number"]{ padding-right: .1em; width: 4.5em; display: inline-block; }
+
+  /* Submit */
+  input[type="submit"]{ padding: 1.2em 2.2em; width: auto; margin-top: 2em; }
+  }
+
+
+
+/* ---------------------------------------------
+
+   Header
+
+--------------------------------------------- */
+
+#header{
+    text-align: center; text-transform: uppercase; letter-spacing: .1em; position: fixed; top: 0; left: 0; width: 100%; background: #222; padding: 0 1em;
+    h1{ letter-spacing: .1em; margin: 0; float: left; font-size: 1em; color: #777; }
+    #nav{
+        float: right; 
+        li{ display: inline-block; }
+        a{ 
+            color: #888; text-decoration: none; padding: .4em 1em; @include transition(.1s linear all);
+            &:hover{ background: #222; color: #fff; }}}
+}
+
+
+/* ---------------------------------------------
+
+   Index
+
+--------------------------------------------- */
+
+.add a{ background: #eee; @include border-radius(100px); color: #fff; font-weight: bold; text-decoration: none; display: inline-block; height: 1em; width: 1em; line-height: 1.05em; vertical-align: text-bottom; text-align: center; }
+
+
+/* ---------------------------------------------
+
+   Helper classes
+
+--------------------------------------------- */
+
+/* Image replacement */
+.ir { background-color: transparent; border: 0; overflow: hidden; /* IE 6/7 fallback */ *text-indent: -9999px; }
+.ir:before { content: ""; display: block; width: 0; height: 100%; }
+
+.hidden { display: none !important; visibility: hidden; }
+
+.clearfix:before,
+.clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+@media only screen and (min-width: 35em) {}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),    only screen and (min-resolution: 144dpi) {}

@@ -1,33 +1,22 @@
-<h1>Blog posts</h1>
-<p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Actions</th>
-        <th>Created</th>
-    </tr>
+<section class="posts">
+    <h1>Life <span class="add"><?= $this->Html->link('+', array('action' => 'add')); ?></a></h1>
 
-<!-- Here's where we loop through our $posts array, printing out post info -->
+    <? foreach ($posts as $post): ?>
+    
+    <article class="post" id="post-<?= $post['Post']['id']; ?>">
+        <h2><?php echo $this->Html->link($post['Post']['title'], array('action' => 'view', $post['Post']['id'])); ?></h2>
+        
+        <div class="content">
+            <?= $post['Post']['body']; ?>
+        </div>
 
-    <?php foreach ($posts as $post): ?>
-    <tr>
-        <td><?php echo $post['Post']['id']; ?></td>
-        <td>
-            <?php echo $this->Html->link($post['Post']['title'], array('action' => 'view', $post['Post']['id'])); ?>
-        </td>
-        <td>
-            <?php echo $this->Form->postLink(
-                'Delete',
-                array('action' => 'delete', $post['Post']['id']),
-                array('confirm' => 'Are you sure?'));
-            ?>
-            <?php echo $this->Html->link('Edit', array('action' => 'edit', $post['Post']['id'])); ?>
-        </td>
-        <td>
-            <?php echo $post['Post']['created']; ?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+        <footer class="meta">
+            <? /* echo $this->Form->postLink( 'Delete', array('action' => 'delete', $post['Post']['id']), array('confirm' => 'Are you sure?')); */ ?>
+            <?= $this->Html->link('Edit', array('action' => 'edit', $post['Post']['id'])); ?>
+            | <?= $post['Post']['created']; ?>
+        </footer>
+    </article>
 
-</table>
+    <? endforeach; ?>
+    <? unset($routine); ?>
+</section>

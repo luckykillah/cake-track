@@ -1,7 +1,17 @@
-<h1><?php echo h($post['Post']['title']); ?></h1>
+<article class="post single">
+	<header>
+		<h1><?php echo h($post['Post']['title']); ?></h1>
+		<p><em><?= date('n.j', time($post['Post']['created'])); ?></em></p>
+	</header>
 
-<p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
+	<div class="content">
+		<?= $post['Post']['body']; ?>
+	</div>
 
-<p><?php echo h($post['Post']['body']); ?></p>
+	<footer>
+		<? foreach($post['Category'] as $cat): ?>
+			<?= $this->Html->link($cat['title'] , array('controller' => 'categories', 'action' => 'view', $cat['id'])); ?>
+		<? endforeach ?>
+	</footer>
 
-<pre><? print_r($post); ?></pre>
+</article>

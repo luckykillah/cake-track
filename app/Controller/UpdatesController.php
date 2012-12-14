@@ -14,6 +14,7 @@ class UpdatesController extends AppController {
     }
 
     public function add() {
+        $this->set('routines', $this->Update->Routine->find('all'));
         if ($this->request->is('update')) {
             $this->Update->create();
             if ($this->Update->save($this->request->data)) {
